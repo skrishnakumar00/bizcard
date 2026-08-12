@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S. Krishnakumar — Freelance Software Consultant</title>
+<title>S. Krishnakumar & Aditya Krishnakumar — Software Consulting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -40,38 +40,65 @@
     box-shadow: 0 18px 40px -14px rgba(14,26,43,0.35), 0 2px 8px rgba(14,26,43,0.12);
   }
 
-  /* Top navy section */
+  /* Top navy section - shared intro */
   .top{
     background: var(--navy);
-    padding: 30px 24px 26px;
+    padding: 26px 24px 22px;
   }
-  h1{
-    color: #FFFFFF;
-    font-size: 25px;
-    line-height: 1.15;
-    margin: 0 0 5px;
-    letter-spacing: -0.01em;
-  }
-  .role{
+  .firm{
     font-family:'IBM Plex Mono', monospace;
-    font-size: 12.5px;
+    font-size: 12px;
     color: var(--gold);
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    margin: 0 0 16px;
+    margin: 0 0 12px;
   }
   .pitch{
     font-size: 14px;
     line-height: 1.6;
     color: var(--navy-text-soft);
     margin: 0;
-    padding-top: 16px;
-    border-top: 1px solid var(--navy-soft);
+  }
+
+  /* Tab switcher */
+  .tabs{
+    display:flex;
+    background: var(--navy-soft);
+  }
+  .tab-btn{
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--navy-text-soft);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 13px 8px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab-btn.active{
+    color: #FFFFFF;
+    border-bottom: 2px solid var(--gold);
   }
 
   /* Bottom paper section */
   .bottom{
     padding: 22px 24px 24px;
+  }
+  .person{
+    display:none;
+  }
+  .person.active{
+    display:block;
+  }
+  .person h1{
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
   }
 
   .links{
@@ -163,69 +190,132 @@
   <div class="card">
 
     <div class="top">
-      <h1>S. Krishnakumar</h1>
-      <p class="role">Freelance Software Consultant</p>
+      <p class="firm">Software Consulting — Dashboards</p>
       <p class="pitch">
-        Helping founders turn scattered data and ideas into decision dashboards.
+        I help founders turn scattered data and ideas into decision dashboards.
         Built with the rigor of enterprise capital markets systems.
       </p>
     </div>
 
-    <div class="bottom">
-      <div class="links">
-        <a href="mailto:skrishnakumar00@gmail.com">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <span class="label">
-            <span class="k">Email</span>
-            <span class="v">skrishnakumar00@gmail.com</span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a href="https://wa.me/919820911779" target="_blank" rel="noopener">
-          <span class="icon"><svg viewBox="0 0 24 24"><path d="M6.5 10.5a5.5 5.5 0 0 1 11 0c0 4-3 6-3 8"/><path d="M17.5 18h.01"/><path d="M4 20l1.3-3.6A8 8 0 1 1 8.6 19L4 20z"/></svg></span>
-          <span class="label">
-            <span class="k">Phone</span>
-            <span class="v">+91 98209 11779</span>
-            <span class="note">Kindly WhatsApp before calling</span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/krishnakumar-subramanian-14908420/" target="_blank" rel="noopener">
-          <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 11v5M8 8v.01M12 16v-3.5a1.5 1.5 0 0 1 3 0V16"/></svg></span>
-          <span class="label">
-            <span class="k">LinkedIn</span>
-            <span class="v">Connect / see experience</span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-      </div>
-
-      <button class="save-btn" onclick="saveContact()">
-        <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
-        Save to Contacts
-      </button>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-btn-1" onclick="showPerson(1)">S. Krishnakumar</button>
+      <button class="tab-btn" id="tab-btn-2" onclick="showPerson(2)">Aditya Krishnakumar</button>
     </div>
 
+    <div class="bottom">
+
+      <!-- Person 1: S. Krishnakumar -->
+      <div class="person active" id="person-1">
+        <h1>S. Krishnakumar</h1>
+        <div class="links">
+          <a href="mailto:skrishnakumar00@gmail.com">
+            <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="label">
+              <span class="k">Email</span>
+              <span class="v">skrishnakumar00@gmail.com</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://wa.me/919820911779" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24"><path d="M6.5 10.5a5.5 5.5 0 0 1 11 0c0 4-3 6-3 8"/><path d="M17.5 18h.01"/><path d="M4 20l1.3-3.6A8 8 0 1 1 8.6 19L4 20z"/></svg></span>
+            <span class="label">
+              <span class="k">Phone</span>
+              <span class="v">+91 98209 11779</span>
+              <span class="note">Kindly WhatsApp before calling</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/krishnakumar-subramanian-14908420/" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 11v5M8 8v.01M12 16v-3.5a1.5 1.5 0 0 1 3 0V16"/></svg></span>
+            <span class="label">
+              <span class="k">LinkedIn</span>
+              <span class="v">Connect / see experience</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+        <button class="save-btn" onclick="saveContact(1)">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+          Save to Contacts
+        </button>
+      </div>
+
+      <!-- Person 2: Aditya Krishnakumar -->
+      <div class="person" id="person-2">
+        <h1>Aditya Krishnakumar</h1>
+        <div class="links">
+          <a href="mailto:adityak1518@gmail.com">
+            <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span class="label">
+              <span class="k">Email</span>
+              <span class="v">adityak1518@gmail.com</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="tel:+919769214960">
+            <span class="icon"><svg viewBox="0 0 24 24"><path d="M6.5 10.5a5.5 5.5 0 0 1 11 0c0 4-3 6-3 8"/><path d="M17.5 18h.01"/><path d="M4 20l1.3-3.6A8 8 0 1 1 8.6 19L4 20z"/></svg></span>
+            <span class="label">
+              <span class="k">Phone</span>
+              <span class="v">+91 97692 14960</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="https://www.linkedin.com/in/aditya-krishnakumar-655a0a222/" target="_blank" rel="noopener">
+            <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 11v5M8 8v.01M12 16v-3.5a1.5 1.5 0 0 1 3 0V16"/></svg></span>
+            <span class="label">
+              <span class="k">LinkedIn</span>
+              <span class="v">Connect / see experience</span>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+        <button class="save-btn" onclick="saveContact(2)">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+          Save to Contacts
+        </button>
+      </div>
+
+    </div>
   </div>
 
   <script>
-    function saveContact(){
-      const vcard = [
-        "BEGIN:VCARD",
-        "VERSION:3.0",
-        "N:Krishnakumar;S.;;;",
-        "FN:S. Krishnakumar",
-        "TITLE:Freelance Software Consultant",
-        "TEL;TYPE=CELL:+919820911779",
-        "EMAIL:skrishnakumar00@gmail.com",
-        "URL:https://www.linkedin.com/in/krishnakumar-subramanian-14908420/",
-        "END:VCARD"
-      ].join("\r\n");
+    function showPerson(n){
+      document.querySelectorAll('.person').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('person-' + n).classList.add('active');
+      document.getElementById('tab-btn-' + n).classList.add('active');
+    }
+
+    function saveContact(n){
+      let vcard;
+      if(n === 1){
+        vcard = [
+          "BEGIN:VCARD",
+          "VERSION:3.0",
+          "N:Krishnakumar;S.;;;",
+          "FN:S. Krishnakumar",
+          "TEL;TYPE=CELL:+919820911779",
+          "EMAIL:skrishnakumar00@gmail.com",
+          "URL:https://www.linkedin.com/in/krishnakumar-subramanian-14908420/",
+          "END:VCARD"
+        ].join("\r\n");
+      } else {
+        vcard = [
+          "BEGIN:VCARD",
+          "VERSION:3.0",
+          "N:Krishnakumar;Aditya;;;",
+          "FN:Aditya Krishnakumar",
+          "TEL;TYPE=CELL:+919769214960",
+          "EMAIL:adityak1518@gmail.com",
+          "URL:https://www.linkedin.com/in/aditya-krishnakumar-655a0a222/",
+          "END:VCARD"
+        ].join("\r\n");
+      }
       const blob = new Blob([vcard], { type: "text/vcard" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "S-Krishnakumar.vcf";
+      a.download = (n === 1 ? "S-Krishnakumar" : "Aditya-Krishnakumar") + ".vcf";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
